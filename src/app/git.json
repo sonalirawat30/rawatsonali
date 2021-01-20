@@ -1,0 +1,19 @@
+{
+    "data": [
+      {
+        "name": "The GodFather",
+        "price": 10,
+        "author": "Mario Puzo"
+      },
+      {
+        "name": "The Fellowship Of The Ring ",
+        "price": 15,
+        "author": "J.R.R Tolkien"
+      },
+      {
+        "name": "Harry Potter ",
+        "price": 20,
+        "author": "J.K Rowling"
+      }
+    ]
+  }

@@ -1,0 +1,68 @@
+<div class="container">
+    <form name="form" #f="ngForm" novalidate>
+        <h3 style="text-align: center">Form</h3>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" [(ngModel)]="data.name" #name="ngModel"
+            [ngClass]="{ 'is-invalid':f.submitted && name.invalid }"  name="name" required>
+            <div class="invalid-feedback">
+                <p>Name is required</p>
+                </div>
+        </div>
+           <div class="row">
+               <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" [(ngModel)]="data.email" #email="ngModel"
+                    [ngClass]="{ 'is-invalid':f.submitted && email.invalid }"  name="email" required>
+                    <div class="invalid-feedback">
+                        <p>Email is required</p>
+            </div>
+        </div>
+               </div>
+           <div class="col-lg-6">
+            <div class="form-group">
+                <label for="mobile">Mobile</label>
+                <input type="number" class="form-control" [(ngModel)]="data.mobile" #mobile="ngModel"
+                [ngClass]="{ 'is-invalid':f.submitted && mobile.invalid }"  name="mobile" required>
+                <div class="invalid-feedback">
+                    <p>Mobile is required</p>
+        </div>
+    </div></div>
+           </div>
+           <div class="row">
+               <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="address" class="form-control" [(ngModel)]="data.address" #address="ngModel"
+                    [ngClass]="{ 'is-invalid':f.submitted && address.invalid }"  name="mobile" required>
+                    <div class="invalid-feedback">
+                        <p>Address is required</p>
+            </div></div>
+                    
+               </div>
+               <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" [(ngModel)]="data.password" #password="ngModel"
+                    [ngClass]="{ 'is-invalid':f.submitted && password.invalid }"  name="password" required>
+                    <div class="invalid-feedback">
+                        <p>Password is required</p>
+            </div></div> 
+            </div>  </div>
+            <div class="form-group">
+                <label for="City">City</label>
+                <select class="form-control" [(ngModel)]="data.City" #City="ngModel"
+                [ngClass]="{ 'is-invalid':f.submitted && City.invalid }"  name="City" required>
+                <option></option>
+                <option>Delhi</option>
+                <option>Ghaziabad</option>
+                <option>Banglore</option>
+                <div class="invalid-feedback">
+                    <p>City is required</p>
+        </div></select>
+    </div>
+        <button class="btn btn-primary" type="submit" (click)="onClick()">Submit</button>       
+    </form>
+</div>
+

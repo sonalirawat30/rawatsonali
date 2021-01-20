@@ -1,0 +1,73 @@
+<div class="container">
+    <h1 class="text-center my-3">Employee CRUD service</h1>
+
+    <div class="d-block my-3">
+      <form class="row">
+        <div class="col form-group mb-2">
+          <label for="name" class="sr-only">Name</label>
+          <input type="text" class="form-control" name="name" 
+            [(ngModel)]="newEmp.name" placeholder="Employee name">
+        </div>
+        <div class="col form-group mb-2">
+          <label for="age" class="sr-only">Age</label>
+          <input type="number" class="form-control" name="age" 
+            [(ngModel)]="newEmp.age" placeholder="Employee age">
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary mb-2" 
+            (click)="create()">Create</button>
+        </div>
+      </form>
+    </div>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th width=400>ID</th>
+          <th width=400>Name</th>
+          <th width=400>Age</th>
+          <th width=200>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of employees;index as i">
+          <td>{{emp.id}}</td>
+          <td>{{emp.name}}</td>
+          <td>{{emp.age}}</td>
+          <td>
+            <div class="d-flex justify-content-center">
+              <a class="btn btn-sm btn-success" (click)="open(content, emp)">Edit</a>
+              <a class="btn btn-sm btn-danger ml-2" (click)="deleteEmployee(emp.id)">Delete</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <ng-template #content let-modal>
+    <form>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Employee update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      
+        <div class="form-group">
+          <label for="name">Employee name</label>
+          <input type="text" class="form-control" name="name" [(ngModel)]="updateEmp.name">
+        </div>
+        <div class="form-group">
+          <label for="age">Employee age</label>
+          <input type="number" class="form-control" name="age" [(ngModel)]="updateEmp.age">
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline-dark" (click)="modal.dismiss('Cancel')">Cancel</button>
+      <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save')">Save</button>
+    </div>
+  </form>
+  </ng-template>
+  

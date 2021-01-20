@@ -1,0 +1,66 @@
+<div class="container">
+    <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit()">
+        <h3 style="text-align: center">UserForm</h3>
+         <div class="form-group">
+            <label>Name</label>
+            <input type="text" formControlName="Name" id="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Name?.errors}" >
+            <div *ngIf="submitted && f.Name?.errors" class="invalid-feedback">
+                <p > Name is required</p>
+            </div>
+   </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="email">Email</label><br>
+                    <input type="email" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Email?.errors }" >
+                    <div *ngIf="submitted && f.Email?.errors" class="invalid-feedback">
+                        <p>Email is required</p>
+                    </div>
+            </div></div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="mobile">Mobile_No</label><br>
+                    <input type="number" class="form-control" formControlName="Mobile_No"  [ngClass]="{ 'is-invalid': submitted && f.Mobile_No?.errors }" >
+                    <div *ngIf="submitted && f.Mobile_No?.errors" class="invalid-feedback">
+                        <p> Number is required</p>
+                    </div>
+                </div>
+            </div></div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="password">Password</label><br>
+                        <input type="password" formControlName="Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Password?.errors}" />
+                        <div *ngIf="submitted && f.Password?.errors" class="invalid-feedback">
+                            <p>Password is required</p>
+                </div>
+            </div></div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="password">Confirm</label><br>
+                    <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword?.errors }" />
+                    <div *ngIf="submitted && f.confirmPassword?.errors" class="invalid-feedback">
+                        <p>Confirm Password is required</p>
+                </div> 
+            </div>   
+            </div>  </div>            
+            <div class="form-group">
+                <label for="city">City</label>
+                <select formControlName="City" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.City?.errors }">
+                    <option></option>
+                    <option>Hyderabad</option>
+                    <option>Banglore</option>
+                    <option>Gujarat</option>
+                    <option>Delhi</option>
+                </select>
+                <div *ngIf="submitted && f.City?.errors" class="invalid-feedback">
+                    <p>Required</p>
+                </div>
+            </div>
+            <br>
+                <div class="text-center">
+                    <button class="btn btn-primary mr-1">Submit</button>
+                    <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                </div>
+        </form>
+</div>
