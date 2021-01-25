@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
   public submit() {
     
-    if (this.login.name == 'sonali' && this.login.password == 'son123wyz') {
+    if (this.login.name == 'vipul' && this.login.password == 'vipul') {
       localStorage.setItem("token", "xyz")
       this.toastr.success('Successfully Login');
       this.router.navigate(['/git']);
