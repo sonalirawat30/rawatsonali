@@ -1,36 +1,147 @@
-<!-- <p-table  [value]="users">
-    <ng-template pTemplate="header">
-        <tr>
-            <td>Code</td>
-            <td>Data</td>
-            <td>Meta</td>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" >
-        <tr *ngFor ="let user of users" >
-            <td>{{user.code}}</td>
-            <td>{{user.data}}</td>
-            <td>{{user.meta}}</td>
-        </tr>
-
-   
-    </ng-template>
-</p-table> -->
 <div class="container">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <td width=200>Code</td>
-                <td width=200> Data</td>
-                <td width=200>Meta</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of users">
-                <td>{{user.code}}</td>
-                <td>{{user.data}}</td>
-                <td>{{user.meta}}</td>
-            </tr>
-        </tbody>
-    </table>
+  <p-table class="table table-bordered" #filter [value]="users" [filterDelay]="0"
+    [globalFilterFields]="['Id','Name','Email','Gender','Status']">
+    <ng-template pTemplate="caption">
+      <div class="table-header">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText size="50" placeholder="Search" [filter]="true"
+          (input)="filter.filterGlobal($event.target.value, 'contains')">
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <td width=100>Id</td>
+        <td width=100>Name</td>
+        <td width=200>Email</td>
+        <td width=100>Gender</td>
+        <td width=100>Status</td>
+        <td width=100>Actions</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body">
+      <tr *ngFor="let user of users |  paginate: { itemsPerPage: 5, currentPage: page }">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.gender}}</td>
+        <td>{{user.status}}</td>
+        <td>
+          <div class="d-flex justify-content-center">
+            <a class="btn btn-sm btn-success" (click)="open(content, user)">Edit</a>
+            <a class="btn btn-danger" (click)="deleteData(content,user.id,true)">Delete</a>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <div>
+    <pagination-controls (pageChange)="page=$event"></pagination-controls>
+  </div>
 </div>
+
+<ng-template #content let-modal>
+  <form>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">User 
+        <span *ngIf="userId && userName && userEmail && userGender && userStatus && !isUserDel">update</span>
+        <span *ngIf="isUserDel">delete</span>
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      
+      <div *ngIf="!isUserDel" class="form-group">
+        <label for="id">Id</label>
+        <input type="number" class="form-control" name="userId" [(ngModel)]="userId">
+      </div>
+      <div *ngIf="!isUserDel" class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="userName" [(ngModel)]="userName">
+      </div>
+      <div *ngIf="!isUserDel" class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="userEmail" [(ngModel)]="userEmail">
+      </div>
+      <div *ngIf="!isUserDel" class="form-group">
+        <label for="gender">Gender :</label><br>
+        <label for="male   ">
+          <input type="radio" name="userGender" class="form-control" value="male" [(ngModel)]="userGender">
+          Male</label><br>
+        <label for="female ">
+          <input type="radio" name="userGender" value="female" class="form-control" value="female" [(ngModel)]="userGender">
+          Female </label><br>
+      </div>
+      <div *ngIf="!isUserDel" class="form-group">
+        <label for="status">Status</label>
+        <input type="status" class="form-control" name="userStatus" [(ngModel)]="userStatus">
+      </div>
+      <div *ngIf="isUserDel">
+        <h3>Are you sure you want to deleted ?</h3>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline-dark" (click)="modal.dismiss('Cancel')">
+        <span *ngIf="!isUserDel">Cancel</span>
+        <span *ngIf="isUserDel">No</span>
+      </button>
+      <button *ngIf="!isUserDel" type="button" class="btn btn-outline-primary"
+        (click)="modal.close('Save')">Save</button>
+      <button *ngIf="isUserDel" type="button" class="btn btn-outline-primary" (click)="modal.close('click')">Yes</button>
+    </div>
+  </form>
+</ng-template>
+
+<!-- <ng-template #content let-modal>
+  <form>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Users
+        <span *ngIf="userId && userName && userEmail && userGender && userStatus && !isDel">Update</span>
+        <span *ngIf="isDel">delete</span>
+      </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button></div>
+    <div class="modal-body">
+
+      <div *ngIf="!isDel" class="form-group">
+        <label for="id">Id</label>
+        <input type="number" class="form-control" name="userId" [(ngModel)]="userId">
+      </div>
+      <div *ngIf="!isDel" class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="userName" [(ngModel)]="userName">
+      </div>
+      <div *ngIf="!isDel" class="form-group">
+        <label for="age">Email</label>
+        <input type="email" class="form-control" name="userEmail" [(ngModel)]="userEmail">
+      </div>
+      <div *ngIf="!isDel" class="form-group">
+        <label for="gender">Gender :</label><br>
+        <label for="male   ">
+          <input type="radio" name="userGender" class="form-control" value="male" [(ngModel)]="userGender">
+          Male</label><br>
+        <label for="female ">
+          <input type="radio" name="userGender" value="female" class="form-control" value="female" [(ngModel)]="userGender">
+          Female </label><br>
+      </div>
+      <div *ngIf="!isDel" class="form-group">
+        <label for="age">Status</label>
+        <input type="status" class="form-control" name="userStatus" [(ngModel)]="userStatus">
+      </div>
+      <div *ngIf="isDel">
+        <h3>Are you sure you want to delete ?</h3>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline-dark" (click)="modal.dismiss('Cancel')">
+        <span *ngIf="!isDel">Cancel</span>
+      </button>
+      <button *ngIf="!isDel" type="button" class="btn btn-outline-primary" (click)="modal.close('Save')">Save
+      </button>
+      <button *ngIf="isDel" type="button" class="btn btn-outline-primary" (click)="modal.close('click')">Yes</button>
+    </div>
+
+  </form>
+</ng-template> -->

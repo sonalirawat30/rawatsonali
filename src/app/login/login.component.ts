@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ export class LoginComponent implements OnInit {
     name: '',
     password: ''
   }
-  constructor(public router: Router) { }
+  constructor(public router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -19,10 +21,11 @@ export class LoginComponent implements OnInit {
     
     if (this.login.name == 'sonali' && this.login.password == 'son123wyz') {
       localStorage.setItem("token", "xyz")
-      this.router.navigate(['home'])
+      this.toastr.success('Successfully Login');
+      this.router.navigate(['/git']);
     } else {
-      alert("please enter valid credentials")
+      this.toastr.error('invalid username and password')
+      }
       localStorage.clear();
     }
   }
-}

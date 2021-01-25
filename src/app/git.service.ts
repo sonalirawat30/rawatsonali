@@ -10,5 +10,11 @@ export class GitService {
 
   getData(): Observable<any> {
     return this.http.get('https://gorest.co.in/public-api/users');
- }
+  }
+  updateData(user): Observable<any> {
+    return this.http.put('https://gorest.co.in/public-api/users', user);
+  }
+    deleteData(id: number): Observable<any> {
+    return this.http.delete<any>('https://gorest.co.in/public-api/users/${id}');
+   }
 }

@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { GitComponent } from './git/git.component';
 import { TableModule } from 'primeng/table';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,6 @@ import { TableModule } from 'primeng/table';
     LoginComponent,
     HomeComponent,
     GitComponent
-    
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,10 @@ import { TableModule } from 'primeng/table';
     ReactiveFormsModule,
     FormsModule ,
     HttpClientModule,
-    TableModule
+    TableModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
