@@ -1,0 +1,14 @@
+
+
+<!-- <div class="box">
+    <input type="text" placeholder="update name" #name >
+    <button (click)="updateUserName(name)">Update</button><br> 
+</div>  -->
+<div class="row">
+    <div class="col">
+        <h4>Upload Image</h4>
+            <img [src]="imageUrl" style="width:250px;height:200px">
+            <input type="file" #image (change)="selectFiles($event.target.files)">
+            <button  (click)="updateUserName(image)" >Upload</button>
+    </div>
+</div>
