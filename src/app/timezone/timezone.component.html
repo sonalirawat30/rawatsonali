@@ -1,7 +1,10 @@
 <p>
     Select :
-    <select >
-        <option *ngFor="let item of time ">{{item.name}}</option>
-    </select> 
-</p><hr>
+    <select>
+        <option *ngFor="let item of time ">
+            {{item.name}}
+        </option>
+    </select>
+</p>
+<hr>
 <p>{{ todayDate | customeDate:'value' }}</p>

@@ -4,7 +4,7 @@ import * as moment from 'moment';
 
 @Pipe({
   name: 'customeDate',
-  pure:false 
+  pure: false
 })
 export class CustomeDatePipe extends DatePipe implements PipeTransform {
 
@@ -14,6 +14,7 @@ export class CustomeDatePipe extends DatePipe implements PipeTransform {
   transform(value: any): any {
     // @ts-ignore
     return super.transform(value, moment.localeData().longDateFormat('fullDate'));
-    }
-
+  }
 }
+
+
