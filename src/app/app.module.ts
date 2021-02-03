@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule,routingComponent} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +16,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
+import { LanguageComponent } from './language/language.component';
+import { TranslateModule ,TranslateLoader} from '@ngx-translate/core';
+import { TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TimezoneComponent } from './timezone/timezone.component';
+import { MomentModule } from 'ngx-moment';
+import { CustomeDatePipe } from './custome-date.pipe';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +34,10 @@ import { HeaderComponent } from './header/header.component';
     HomeComponent,
     GitComponent,
     ProfileComponent,
-    HeaderComponent
+    HeaderComponent,
+    LanguageComponent,
+    TimezoneComponent,
+    CustomeDatePipe
   ],
   imports: [
     BrowserModule,
@@ -38,7 +48,15 @@ import { HeaderComponent } from './header/header.component';
     TableModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    TranslateModule.forRoot({
+      loader:{
+        provide:TranslateLoader,
+        useFactory:(http:HttpClient)=>{return new TranslateHttpLoader(http);},
+        deps:[HttpClient]
+      }
+    }),
+    MomentModule.forRoot()
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

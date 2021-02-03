@@ -1,0 +1,7 @@
+<p>
+    Select Languages:
+    <select  (change)="switchLang($event.target.value)">
+        <option *ngFor="let item of  addLanguages ">{{item}}</option>
+    </select> 
+</p><hr>
+<p>{{'lang.defination'|translate}}</p>
