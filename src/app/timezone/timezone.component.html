@@ -10,9 +10,9 @@
 <p>{{todayDate.name }}</p>
 <p>{{ todayDate.timeZone | customeDate:'full' }}</p> -->
 
-<select (change)="changeTimezone( )">
+<select (change)="changeTimezone($event)">
     <!-- <option [ngValue]="undefined" selected>Select TimeZone</option> -->
-    <option *ngFor="let currentdate of dataOfZone" >
+    <option *ngFor="let currentdate of dataOfZone" [value]="currentdate.utc[0]" >
         {{currentdate.text}}
     </option>
 </select>

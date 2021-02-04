@@ -30,15 +30,9 @@ ngOnInit(): void {
 this.dataOfZone = this.timeZone.GetTimeZone();
 }
 
- changeTimezone() { 
-      
-  let date =  new Date() 
-  console.log('Given IST datetime: ' + date); 
-
-  let usaTime =  
-      date.toLocaleString("en-US", { 
-          timeZone: "_timeZone"  
-      }); 
-  console.log('USA datetime: ' + usaTime); 
+ changeTimezone(item) { 
+  console.log("🚀 ~ file: timezone.component.ts ~ line 34 ~ changeTimezone ~ item", item)
+  let str = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+  console.log(str);
 } 
 }
