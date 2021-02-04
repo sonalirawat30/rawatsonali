@@ -1,10 +1,11 @@
 <p>
     Select :
-    <select>
+    <select (change)="selectedValue($event.target.value )">
         <option *ngFor="let item of time ">
-            {{item.name}}
+            <span>{{item.name}}</span>
         </option>
     </select>
 </p>
 <hr>
-<p>{{ todayDate | customeDate:'value' }}</p>
+<p>{{todayDate.name }}</p>
+<p>{{ todayDate.timeZone | customeDate:'full' }}</p>
