@@ -22,7 +22,9 @@ import { TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { TimezoneComponent } from './timezone/timezone.component';
 import { MomentModule } from 'ngx-moment';
 import { CustomeDatePipe } from './custome-date.pipe';
-
+import { HomepageComponent } from './homepage/homepage.component';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { CountryComponent } from './country/country.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { CustomeDatePipe } from './custome-date.pipe';
     HeaderComponent,
     LanguageComponent,
     TimezoneComponent,
-    CustomeDatePipe
+    CustomeDatePipe,
+    HomepageComponent,
+    CountryComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,8 @@ import { CustomeDatePipe } from './custome-date.pipe';
         deps:[HttpClient]
       }
     }),
-    MomentModule.forRoot()
+    MomentModule.forRoot(),
+    AutoCompleteModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

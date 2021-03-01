@@ -1,18 +1,10 @@
-<!-- <p>
-    Select :
-    <select (change)="selectedValue($event.target.value )">
-        <option *ngFor="let item of time ">
-            <span>{{item.name}}</span>
-        </option>
-    </select>
-</p>
-<hr>
-<p>{{todayDate.name }}</p>
-<p>{{ todayDate.timeZone | customeDate:'full' }}</p> -->
-
-<select (change)="changeTimezone($event)">
-    <!-- <option [ngValue]="undefined" selected>Select TimeZone</option> -->
+<select (change)="changeTimezone($event)" >
+     <option  selected>Select TimeZone</option>
     <option *ngFor="let currentdate of dataOfZone" [value]="currentdate.utc[0]" >
-        {{currentdate.text}}
+    {{currentdate.text}}
     </option>
-</select>
+    </select>
+    
+    <br>
+    
+    <h1>current Zone : {{todayDate}}</h1>

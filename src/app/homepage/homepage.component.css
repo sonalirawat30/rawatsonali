@@ -1,0 +1,117 @@
+
+.google-header 
+{   
+    width: 100%;
+    max-height: 500px;
+    float:right;
+    font-family: sans-serif;
+  } 
+  .google-header img
+  {
+    max-width: 100%;
+    border-radius: 50%;
+    float: right;
+  } 
+  .gmail-img
+  {
+    background-color: green;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0px;
+    right: 8px;
+    margin-right: 15px;
+    margin-top: 22px;
+    cursor: pointer; 
+  } 
+  .header-icons
+  {
+    width: 30px;
+    position: absolute;
+    top: 12px;
+    right: 45px;
+    width: 200px;
+    margin-top: 10px;
+    margin-right: 10px;
+   
+  } 
+  .header-icons .fa-th
+  {
+    font-size: 32px;
+    margin-top: 10px;
+    color: black;
+    float: right;
+    margin-right: 30px;
+    cursor: pointer;
+  } 
+  .header{
+    font-size: 17px;
+    width: 30px;
+    position: absolute;
+    top: 12px;
+    color: black;
+    right: 10px;
+    width: 200px;
+    margin-top: 25px;
+    margin-right: 28px;
+    
+  } 
+  .google-image img {
+    margin: 150px auto 10px;
+    width: 350px;
+    cursor: pointer;
+  } 
+  .input-group {
+    margin: 0px auto 10px;
+    border-radius: 20px;
+    max-width: 525px;
+    height: 45px;
+    background-color: #F5F5F5;
+    cursor: pointer;
+  }
+  .form-control {
+    border: none;
+    border-radius: 20px;
+    background-color: #F5F5F5;
+    position: absolute;
+    background: transparent;
+    top: 0;
+    border: none;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .input-group-text {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  .input-group-text .fa-search {
+    margin-right: 477px;
+  }
+  .input-group .fa {
+    color: #007bff;
+    cursor: pointer;
+  }
+  .form-control:focus {
+    box-shadow: none;
+  }
+  #buttons{
+   display: flex;
+   justify-content: center;
+   margin-top: 35px; 
+   cursor: pointer;
+  }
+   .button{
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px 5px;
+    background: rgb(231,231,231);
+    cursor: pointer;
+  } 
+  #links{
+    margin-top: 20px;
+    text-align: center;
+  } 

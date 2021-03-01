@@ -25,7 +25,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "angular-confirmation-popover": "^6.0.0",
     "angular-moment-timezone": "^1.7.1",
-    "bootstrap": "^4.5.3",
+    "bootstrap": "^4.6.0",
     "font-awesome": "^4.7.0",
     "json-server": "^0.16.3",
     "moment": "^2.29.1",
