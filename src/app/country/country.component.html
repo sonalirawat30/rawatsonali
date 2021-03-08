@@ -1,14 +1,7 @@
-
+<h2>Basic</h2>
+<p-autoComplete [(ngModel)]="selectedCountries" [suggestions]="filteredCountries"
+    (completeMethod)="filterCountry($event)" field="name" field="name"></p-autoComplete><br><br>
 <h2>Multiple</h2>
 <p-autoComplete [(ngModel)]="selectedCountry" [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)"
- field="name" [multiple]="true">
- 
-</p-autoComplete><br><br>
-<h2>Basic</h2>
-<p-autoComplete [(ngModel)]="selectedCountry" [suggestions]="filteredCountries"
- (completeMethod)="filterCountry($event)" field="name">
-     <!-- <div  *ngFor="let country of countries" [value]="country">
-            {{country.name}}
-     </div> -->
+    [multiple]="true" field="name">
 </p-autoComplete>
-

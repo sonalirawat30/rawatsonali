@@ -6,9 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CountryService {
-  private _url = 'http://localhost:3000';
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
   getData(): Observable<any> {
-    return this.http.get<any>(`${this._url}/data`);
+    return this.http.get<any>(`assets/country.json`);
   }
 }
